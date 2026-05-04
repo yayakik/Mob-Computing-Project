@@ -9,13 +9,17 @@ import 'package:movie1/firebase_options.dart';
 import 'package:movie1/view/login_signup/entry.dart';
 import 'package:movie1/cubit/password_cubit.dart';
 import 'view/home/Home.dart';
-
+import 'package:device_preview/device_preview.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyWidget());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyWidget(), // Wrap your app
+    ),
+  );
 }
-
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 
